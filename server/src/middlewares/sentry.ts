@@ -1,13 +1,13 @@
 import { Handlers } from '@sentry/node'
 
-const MSentryRequestHandler = Handlers.requestHandler();
+const MSentryRequestHandler = Handlers.requestHandler()
 
-const MSentryTracingHandler = Handlers.tracingHandler();
+const MSentryTracingHandler = Handlers.tracingHandler()
 
-const MSentryErrorHandler = Handlers.errorHandler();
+const MSentryErrorHandler = Handlers.errorHandler()
 
 export {
-    MSentryRequestHandler,
-    MSentryTracingHandler,
-    MSentryErrorHandler,   
+	MSentryRequestHandler,
+	MSentryTracingHandler,
+	MSentryErrorHandler,   
 }

@@ -11,7 +11,7 @@ enum RESPONSE_CODES {
   SOMETHING_WENT_WRONG = 500,
 }
 
-export { RESPONSE_CODES };
+export { RESPONSE_CODES }
 
 // enum RESPONSE_MESSAGES {
 //   SUCCESS = "Succesfully completed",

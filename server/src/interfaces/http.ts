@@ -14,7 +14,7 @@ type THeader = {
   value: string | number;
 };
 
-export type { THeader };
+export type { THeader }
 
-export type { IServerResponse };
+export type { IServerResponse }
 

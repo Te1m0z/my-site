@@ -16,4 +16,4 @@ interface IPosts {
   [key: number]: IPost;
 }
 
-export { IBasePost, IPost, IPosts };
+export { IBasePost, IPost, IPosts }
