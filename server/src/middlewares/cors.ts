@@ -5,5 +5,5 @@ const MCors = cors({
 })
 
 export {
-	MCors
+  MCors,
 }

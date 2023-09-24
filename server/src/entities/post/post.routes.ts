@@ -14,17 +14,17 @@ router.get(`/${ROUTE_PREFIX}/:id`, PostController.getById)
 router.post(`/${ROUTE_PREFIX}/`, MCsrf, PostController.create)
 
 router.post(`/${ROUTE_PREFIX}/jwt`, async (req, res) => {
-	res.send(await Jwt.generate({
-		localeLang: 'ru',
-		timeZone: 's',
-		userAgent: '',
-	}, {}))
+  res.send(await Jwt.generate({
+    localeLang: 'ru',
+    timeZone: 's',
+    userAgent: '',
+  }, {}))
 })
 
 router.post(`/${ROUTE_PREFIX}/jwt-valid`, (req, res) => {
-	res.json({
-		is: Jwt.isValid(req.body.token),
-	})
+  res.json({
+    is: Jwt.isValid(req.body.token),
+  })
 })
 
 export { router as postRouter }

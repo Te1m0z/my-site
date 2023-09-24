@@ -19,12 +19,12 @@ type TEnvVarKey =
  * @returns {string} Value of process env variable
  */
 function getEnvVar(keyName: TEnvVarKey): string {
-	const value = process.env[keyName]
-	// if value not found then throw an error
-	if (!value || value.length === 0) {
-		throw new Error(`Environment error :: ${keyName} is not set`)
-	}
-	return value
+  const value = process.env[keyName]
+  // if value not found then throw an error
+  if (!value || value.length === 0) {
+    throw new Error(`Environment error :: ${keyName} is not set`)
+  }
+  return value
 }
 
 export const NODE_ENV = getEnvVar('NODE_ENV')

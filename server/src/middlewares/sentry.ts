@@ -7,7 +7,7 @@ const MSentryTracingHandler = Handlers.tracingHandler()
 const MSentryErrorHandler = Handlers.errorHandler()
 
 export {
-	MSentryRequestHandler,
-	MSentryTracingHandler,
-	MSentryErrorHandler,   
+  MSentryRequestHandler,
+  MSentryTracingHandler,
+  MSentryErrorHandler,   
 }

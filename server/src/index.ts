@@ -36,7 +36,7 @@ app.use(SentryHandlers.MSentryTracingHandler)
 app.use(json())
 
 app.get('/debug-sentry', function mainHandler(req, res) {
-	throw new Error('My first Sentry error!')
+  throw new Error('My first Sentry error!')
 })
 
 app.use(MGzip)
@@ -54,6 +54,6 @@ app.use(SentryHandlers.MSentryErrorHandler)
 app.use(MFatal)
 
 app.listen(EXPRESS_PORT, () => {
-	console.log('Server started on port: ' + EXPRESS_PORT)
+  console.log('Server started on port: ' + EXPRESS_PORT)
 })
 
