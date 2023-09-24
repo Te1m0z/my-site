@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon"
+    "dev": "cross-env NODE_ENV=development nodemon",
+    "prisma:migrate": "npx prisma migrate dev"
   },
   "prisma": {
     "schema": "src/prisma/_main.prisma",
