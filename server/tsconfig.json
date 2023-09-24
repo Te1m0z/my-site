@@ -15,13 +15,13 @@
     "skipLibCheck": true
   },
   "include": [
-    "**/*.ts"
+    "**/*.ts",
+    ".eslintrc.json"
   ],
   "exclude": [
     ".git",
     ".idea",
-    "assets",
-    "public",
+    ".vscode",
     "build",
     "dist",
     "docs",
