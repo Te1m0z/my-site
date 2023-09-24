@@ -1,0 +1,21 @@
+_id: req_8d7fc662a4144eaf87a4bfc3cab9e8a5
+type: Request
+parentId: fld_bbe5eeb3749044c6b9b235c82715f141
+modified: 1695560862061
+created: 1693595220383
+url: "{{ _.server_address }}/csrf"
+name: generate csrf
+description: ""
+method: POST
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1693595220383
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

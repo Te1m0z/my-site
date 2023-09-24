@@ -1,0 +1,23 @@
+_id: req_42e35cba95444e5196f44eb058ee914d
+type: Request
+parentId: fld_700315ab0e62430f9c2d95a7a21a86e8
+modified: 1695560869705
+created: 1693855009813
+url: "{{ _.server_address }}/debug-sentry"
+name: all
+description: ""
+method: GET
+body: {}
+parameters: []
+headers:
+  - name: User-Agent
+    value: Insomnia/2023.5.7
+authentication: {}
+metaSortKey: -1693855009813
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

@@ -1,0 +1,23 @@
+_id: req_1aa5d6264ddb40b5b97b514d0e26b89d
+type: Request
+parentId: fld_bbe5eeb3749044c6b9b235c82715f141
+modified: 1695560964513
+created: 1693653260619
+url: "{{ _.server_address }}/csrf2"
+name: get csrf tokens
+description: ""
+method: GET
+body: {}
+parameters: []
+headers:
+  - name: User-Agent
+    value: Insomnia/2023.5.7
+authentication: {}
+metaSortKey: -1693653260619
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

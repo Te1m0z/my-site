@@ -1,0 +1,30 @@
+_id: req_1934c154d4614bc19e81f3fc7748a6c6
+type: Request
+parentId: wrk_a193360d1c6b4336b7fb54c8c914471d
+modified: 1695560810111
+created: 1694204352983
+url: "{{ _.server_address }}/post/jwt-valid"
+name: isValid
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: >-
+    {
+    	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTQ4Njg0NzAsIm5iZiI6MTY5NDg2ODQ3MCwiZXhwIjoxNjk0ODY4NDgwLCJqdGkiOiJmYzM1NTA2Ni05YTUxLTQ5YmUtYjA3Ni1iYjJiNjlhNDc4ZmMiLCJkaWUiOjE2OTQ4Njg0ODUsInN1YiI6IjEiLCJpc3MiOiJsb2dpbiJ9.NvdianLnsZPwz6SwL1Kq7a9rGo7wLEFqSaLjrNKyCkg"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+  - name: User-Agent
+    value: Insomnia/2023.5.7
+authentication: {}
+metaSortKey: -1693855245315
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

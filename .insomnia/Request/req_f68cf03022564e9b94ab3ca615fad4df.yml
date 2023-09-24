@@ -1,0 +1,41 @@
+_id: req_f68cf03022564e9b94ab3ca615fad4df
+type: Request
+parentId: fld_91764752406c4098b2abcff23474eac2
+modified: 1695560847285
+created: 1691764677767
+url: "{{ _.server_address }}/user/login"
+name: login
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"login": "adm",
+    	"password": "123",
+    	"csrf": "1f6dcb6d-10b0-468e-a62f-50fbf248aa95"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_ae1ac9563c22401bad4ccbbc2c4d042a
+  - id: pair_b1403c940d1b4209b8178d19ef7fa825
+    name: Accept-Language
+    value: ru
+    description: ""
+    disabled: false
+  - id: pair_ff96c484874c4c4e8191eab33d805c89
+    name: X-Timezone
+    value: Asia/Tbilisi
+    description: ""
+    disabled: false
+authentication: {}
+metaSortKey: -1693850711117
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
