@@ -1,0 +1,12 @@
+*.{gz,zip,rar}
+.env
+*.env
+.env.*
+/**/.DS_Store
+
+
+/.next
+/node_modules
+/build
+/output
+/logs

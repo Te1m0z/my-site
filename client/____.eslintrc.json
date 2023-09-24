@@ -1,0 +1,112 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "project": "./tsconfig.json",
+    "ecmaFeatures": {
+      "impliedStrict": true
+    }
+  },
+  "root": true,
+  "env": {
+    "node": true,
+    "browser": true,
+    "es6": true,
+    "jest": true
+  },
+  "plugins": ["@typescript-eslint", "jsdoc"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "next"
+  ],
+  "settings": {
+    "import/resolver": {
+      "typescript": true,
+      "node": true
+    }
+  },
+  "rules": {
+    "semi": ["error", "never"],
+    "arrow-parens": ["error", "always"],
+    "indent": [
+      "error",
+      2,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "linebreak-style": ["error", "unix"],
+    "quotes": ["error", "single"],
+    "jsx-quotes": ["error", "prefer-single"],
+    "object-curly-spacing": ["error", "always"],
+    "no-console": "warn",
+    "comma-dangle": ["error", "always-multiline"],
+    "no-unused-expressions": "error",
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index",
+          "object",
+          "type"
+        ],
+        "pathGroups": [
+          {
+            "pattern": "@/app",
+            "group": "internal"
+          },
+          {
+            "pattern": "@/pages",
+            "group": "internal"
+          },
+          {
+            "pattern": "@/entities",
+            "group": "internal"
+          },
+          {
+            "pattern": "@/widgets",
+            "group": "internal"
+          },
+          {
+            "pattern": "@/features",
+            "group": "internal"
+          },
+          {
+            "pattern": "@/shared",
+            "group": "internal"
+          },
+          {
+            "pattern": "@/assets",
+            "group": "internal"
+          }
+        ],
+        "warnOnUnassignedImports": true,
+        "pathGroupsExcludedImportTypes": ["type"]
+      }
+    ],
+    "@typescript-eslint/no-misused-promises": [
+      "error",
+      {
+        "checksVoidReturn": { "attributes": false }
+      }
+    ],
+    "@typescript-eslint/consistent-type-imports": "warn",
+    "@typescript-eslint/prefer-nullish-coalescing": "warn",
+    "@typescript-eslint/explicit-function-return-type": "warn"
+  },
+  "ignorePatterns": [
+    "node_modules",
+    "src/assets"
+  ]
+}
+

@@ -1,0 +1,1 @@
+export { createAccessToken } from './utils/jwt'
