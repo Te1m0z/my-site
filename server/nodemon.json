@@ -1,11 +1,13 @@
 {
-    "exec": "node -r ts-node/register -r tsconfig-paths/register ./src/index.ts",
-    "ext": "ts,json,yml",
+    "exec": "ts-node --require tsconfig-paths/register src/index.ts",
+    "ext": "ts,json",
     "ignore": [
-        "dist",
+        "db",
+        "logs",
+        "logs",
         "node_modules"
     ],
-    "watch": [
-        "src"
-    ]
+    "watch": ["src"],
+    "inspect": true,
+    "verbose": true
 }

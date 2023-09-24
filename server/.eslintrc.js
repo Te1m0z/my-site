@@ -27,6 +27,7 @@ module.exports = {
     semi: ['error', 'never'],
     'arrow-parens': ['error', 'always'],
     'object-curly-spacing': ['error', 'always'],
+    'no-prototype-builtins': 'off',
     'object-curly-newline': [
       'error',
       {

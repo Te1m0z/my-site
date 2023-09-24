@@ -35,10 +35,6 @@ app.use(SentryHandlers.MSentryTracingHandler)
 /* NPM packages middlewars */
 app.use(json())
 
-app.get('/debug-sentry', function mainHandler(req, res) {
-  throw new Error('My first Sentry error!')
-})
-
 app.use(MGzip)
 app.use(MCors)
 app.use(MSession)
@@ -54,6 +50,7 @@ app.use(SentryHandlers.MSentryErrorHandler)
 app.use(MFatal)
 
 app.listen(EXPRESS_PORT, () => {
+  // eslint-disable-next-line no-console
   console.log('Server started on port: ' + EXPRESS_PORT)
 })
 

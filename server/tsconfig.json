@@ -1,4 +1,10 @@
 {
+  "ts-node": {
+    "files": true
+  },
+  "files": [
+    "./global.d.ts"
+  ],
   "compilerOptions": {
     "lib": ["ES2015", "ES2016", "ES2018"],
     "target": "ES6",
@@ -16,8 +22,6 @@
   },
   "include": [
     "**/*.ts",
-    ".eslintrc.json",
-    "custom.d.ts"
   ],
   "exclude": [
     ".git",

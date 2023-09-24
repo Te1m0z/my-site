@@ -1,10 +1,10 @@
-import type { Request, Response } from 'express'
+import type { NextFunction, Request, Response } from 'express'
 import { somethingWentWrong } from '@/helpers/http'
-import { logger } from '@/config/logger'
+import { logError } from '@/config/logger'
 
-const MFatal = (err: Error, _: Request, res: Response) => {
+const MFatal = (err: Error, _: Request, res: Response, __: NextFunction) => {
   //
-  logger.error('MFatal ::: ' + err.message)
+  logError('MFatal', err.stack || err.message || err.name || err)
   //
   return somethingWentWrong(res)
 }

@@ -1,11 +1,12 @@
+import type { Express } from 'express'
 import { init, Integrations } from '@sentry/node'
 import { ProfilingIntegration } from '@sentry/profiling-node'
-import type { Express } from 'express'
+import { SENTRY_DSN } from '@/config/env'
 
 function initSentry(app: Express) {
   //
   init({
-    dsn: 'https://4538bd1796dbcad2f8f660ef4702ddc7@o4505818395377664.ingest.sentry.io/4505889992015872',
+    dsn: SENTRY_DSN,
     integrations: [
       // enable HTTP calls tracing
       new Integrations.Http({ tracing: true }),
