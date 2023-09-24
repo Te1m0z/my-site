@@ -6,14 +6,12 @@ import { createAccessToken } from '@/entities/jwt/jwt.services'
 type TUserLoginArgs = {
     login: string
     password: string
-    userAgent: string
-    localeLang: string
-    timeZone: string
+    fingerprint: string
 }
 
 async function userLogin(args: TUserLoginArgs) {
   //
-  const { login, password, userAgent, localeLang, timeZone } = args
+  const { login, password, fingerprint } = args
   // Try to get user from db, otherwise throw error
   const user = await prisma.user.findUniqueOrThrow({ where: { login } })
   // Compare original password with hashed in db
@@ -24,9 +22,7 @@ async function userLogin(args: TUserLoginArgs) {
   const tokens = await createAccessToken({
     sub: String(user.id),
     iss: 'login',
-    userAgent,
-    localeLang,
-    timeZone,
+    fingerprint,
   })
   // Preparing data to get back to client's browser
   return {

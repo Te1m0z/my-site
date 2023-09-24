@@ -38,13 +38,13 @@ function methodNotAllowed(response: Response) {
  *
  * @param {NextApiResponse} response - Server response
  */
-function wrongData(response: Response, issues: ZodIssue[]) {
+function wrongData(response: Response, issues?: ZodIssue[]) {
   // Set of headers corresponding to server response
   const headers: THeader[] = []
   // Data in the response from the server
   const payload = {
     status: false,
-    errors: issues.map(({ message, path }) => ({ message, path })),
+    ...(issues && { errors: issues.map(({ message, path }) => ({ message, path })) }),
   }
   // Setting headers for the response
   setHeaders(response, headers)

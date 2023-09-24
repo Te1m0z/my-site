@@ -7,9 +7,7 @@ import { logError } from '@/config/logger'
 import { JWT_SECRET } from '@/config/env'
 
 export type TCreateAccessPayload = JwtPayload & {
-    userAgent: string
-    localeLang: string
-    timeZone: string
+    fingerprint: string
 }
 
 type TAccessTokenFunc = {
@@ -21,15 +19,8 @@ async function createAccessToken(payload: TCreateAccessPayload, options: SignOpt
   //
   try {
     //
-    const { sub, iss, userAgent, localeLang, timeZone } = payload
+    const { sub, iss, fingerprint } = payload
     //
-    if (!userAgent || !localeLang || !timeZone) {
-      throw 'to generate token it requires additional data'
-    }
-    //
-    const fingerprint = hashSync(`${userAgent}-${localeLang}-${timeZone}`, 5)
-    //
-    //const now = Date.now()
     const nowInSec = moment().unix() // now date in seconds
     const jti = uuid() // unique ID of token
     const die = nowInSec + 15 // when token will only be refreshed with refresh token

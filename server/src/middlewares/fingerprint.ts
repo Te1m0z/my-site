@@ -1,6 +1,7 @@
 import type { NextFunction, Request, Response } from 'express'
-import { z, ZodError } from 'zod'
-import { wrongData, somethingWentWrong } from '@/helpers/http'
+import { hashSync } from 'bcrypt'
+import { z } from 'zod'
+import { wrongData } from '@/helpers/http'
 
 type TFinger = {
     userAgent: string
@@ -24,17 +25,21 @@ function MFingerprint(req: Request, res: Response, next: NextFunction) {
   //
   try {
     //
-    MFingerprintHeadersSchema.parse(req.headers)
+    const { userAgent, localeLang, timeZone } = MFingerprintHeadersSchema.parse(req.headers)
+    //
+    if (!userAgent || !localeLang || !timeZone) {
+      throw 'to generate token it requires additional data'
+    }
+    //
+    const fingerprint = hashSync(`${userAgent}-${localeLang}-${timeZone}`, 5)
+    //
+    req.fingerprint = fingerprint
     //
     next()
     //
   } catch (error: unknown) {
     //
-    if (error instanceof ZodError) {
-      return wrongData(res, error.issues)
-    }
-    //
-    return somethingWentWrong(res)
+    return wrongData(res)
   }
 }
 
