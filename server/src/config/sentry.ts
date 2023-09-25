@@ -1,4 +1,4 @@
-import type { Express } from 'express'
+import { type Express } from 'express'
 import { init, Integrations } from '@sentry/node'
 import { ProfilingIntegration } from '@sentry/profiling-node'
 import { SENTRY_DSN } from '@/config/env'
