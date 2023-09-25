@@ -15,6 +15,16 @@ module.exports = {
   },
   plugins: ['@typescript-eslint'],
   rules: {
+    'max-len': [
+      'warn',
+      {
+        code: 200,
+        tabWidth: 2,
+        ignoreUrls: true,
+        ignoreComments: true,
+        ignoreStrings: true,
+      },
+    ],
     indent: [
       'error',
       2,

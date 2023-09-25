@@ -72,9 +72,7 @@ class CSRF implements ICSRF {
     //
     if (userCsrfTokens.length === 0) return
     // find
-    const csrfDeleteIndex = userCsrfTokens.findIndex(
-      ({ token }) => token === csrfToken,
-    )
+    const csrfDeleteIndex = userCsrfTokens.findIndex(({ token }) => token === csrfToken)
     //
     if (csrfDeleteIndex === -1) return
     //

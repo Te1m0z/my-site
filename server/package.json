@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon",
+    "eslint": "npx eslint src --fix",
     "prisma:migrate": "npx prisma migrate dev"
   },
   "prisma": {
