@@ -5,7 +5,7 @@ async function getAllPosts() {
 }
 
 async function getPostById(id: number) {
-  return prisma.post.findUnique({
+  return prisma.post.findUniqueOrThrow({
     where: {
       id,
     },

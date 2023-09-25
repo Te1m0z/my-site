@@ -4,7 +4,7 @@ import { ZodError } from 'zod'
 import { getAllPosts, getPostById } from './post.services'
 import { getPostsSchema, getPostByIdSchema } from './post.validation'
 //
-import { wrongData, somethingWentWrong } from '@/helpers/http'
+import { wrongData, somethingWentWrong, notFound } from '@/helpers/http'
 
 abstract class PostController {
 
@@ -14,6 +14,10 @@ abstract class PostController {
       //
       getPostsSchema.parse(req.query)
       //
+      const posts = await getAllPosts()
+      //
+      return res.json(posts)
+      //
     } catch (error: unknown) {
       //
       if (error instanceof ZodError) {
@@ -22,10 +26,6 @@ abstract class PostController {
       //
       return somethingWentWrong(res)
     }
-    //
-    const posts = await getAllPosts()
-    //
-    return res.json(posts)
   }
 
   static async getById(req: Request, res: Response) {
@@ -44,7 +44,9 @@ abstract class PostController {
         return wrongData(res, error.issues)
       }
       //
-      return somethingWentWrong(res)
+      return notFound(res)
+      //
+      //return somethingWentWrong(res) // зачем мы отлавливаем ошибки о 500 fatal, если есть отдельный MM ??
     }
   }
 
