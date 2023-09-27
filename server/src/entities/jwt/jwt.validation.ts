@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { toCamelCase } from '@/helpers/string'
-import type { TGeneratePayload } from '@/entities/jwt/jwt.services'
+//import type { TGeneratePayload } from '@/entities/jwt/jwt.services'
 
 /* POST : /jwt/test */
 const createJwtAccessTokenSchema = z.object({
@@ -18,7 +18,7 @@ const createJwtAccessTokenSchema = z.object({
     _data[_key] = value
   }
   //
-  return _data as TGeneratePayload
+  return _data
 })
 
 //type TGenerateTestJwtSchema = z.infer<typeof generateTestJwtSchema>

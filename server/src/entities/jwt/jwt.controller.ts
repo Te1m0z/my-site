@@ -1,10 +1,10 @@
 import type { Request, Response } from 'express'
-import { ZodError } from 'zod'
+//import { ZodError } from 'zod'
 //
-import { createAccessToken } from './jwt.services'
-import { generateTestJwtSchema } from './jwt.validation'
+//import { createAccessToken } from './jwt.services'
+//import { generateTestJwtSchema } from './jwt.validation'
 //
-import { wrongData, somethingWentWrong } from '@/helpers/http'
+import { somethingWentWrong } from '@/helpers/http'
 
 abstract class JwtController {
 
@@ -12,7 +12,7 @@ abstract class JwtController {
     //
     try {
       //
-      const headers = generateTestJwtSchema.parse(req.headers)
+      //const headers = generateTestJwtSchema.parse(req.headers)
       //
       //const posts = await createAccessToken({ ...headers })
       //

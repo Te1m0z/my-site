@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon",
     "eslint": "npx eslint src --fix",
-    "prisma:migrate": "npx prisma migrate dev"
+    "prisma:migrate": "npx prisma migrate dev",
+    "docs": "npx typedoc \"src/**/*.ts\""
   },
   "prisma": {
     "schema": "src/prisma/_main.prisma",
@@ -55,8 +56,8 @@
     "morgan": "1.10.0",
     "nodemon": "3.0.1",
     "ts-node": "10.9.1",
-    "ts-node-dev": "2.0.0",
     "tsconfig-paths": "4.2.0",
+    "typedoc": "^0.25.1",
     "typescript": "5.1.6",
     "winston": "3.10.0",
     "winston-daily-rotate-file": "4.7.1"

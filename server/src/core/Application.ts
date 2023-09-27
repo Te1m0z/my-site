@@ -20,7 +20,10 @@ class Application {
   private app: Express
   //
   private server: Server | undefined
-  //
+  
+  /**
+   * Creates App instance.
+   */
   public constructor() {
     //
     this.init()
@@ -89,12 +92,20 @@ class Application {
     process.on('uncaughtException', unexpectedErrorHandler)
     process.on('unhandledRejection', unexpectedErrorHandler)
   }
-  //
-  public getApp() {
+  
+  /**
+   * Get the instance of current application
+   * @returns {Express}
+   */
+  public getApp(): Express {
     return this.app
   }
-  //
-  public getServer() {
+  
+  /**
+   * Get the instance of current server
+   * @returns {Server | undefined}
+   */
+  public getServer(): Server | undefined {
     return this.server
   }
 }
