@@ -4,7 +4,6 @@
     "ignore": [
         "db",
         "logs",
-        "logs",
         "node_modules"
     ],
     "watch": ["src"],

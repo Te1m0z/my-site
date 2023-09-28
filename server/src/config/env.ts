@@ -1,7 +1,9 @@
-// import { config } from 'dotenv'
-// import { join } from 'node:path'
-//config({ path: join(process.cwd(), '.env') })
-import('dotenv/config')
+import { join } from 'node:path'
+import { config } from 'dotenv'
+
+config({
+  path: join(process.cwd(), '.env'),
+})
 
 type TEnvVarKey =
   | 'NODE_ENV'
