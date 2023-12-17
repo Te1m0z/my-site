@@ -3,11 +3,12 @@
   "version": "0.2.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 5050",
-    "build": "next build",
-    "start": "next start",
+    "dev": "npm run sprite && next dev -p 5050",
+    "build": "npm run sprite && next build",
+    "start": "npm run sprite && next start",
     "eslint": "npx eslint src --fix",
-    "test": "npx jest --watch"
+    "test": "npx jest --watch",
+    "sprite": "node generate-svg-sprite.js"
   },
   "engines": {
     "node": ">=18.17.1",
@@ -26,6 +27,7 @@
     "react-hot-toast": "^2.4.1",
     "styled-components": "^6.0.1",
     "styled-theming": "^2.2.0",
+    "svg-sprite": "2.0.2",
     "uuid": "^9.0.0",
     "zod": "^3.21.4"
   },

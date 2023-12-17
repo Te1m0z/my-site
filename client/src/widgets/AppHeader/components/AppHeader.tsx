@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import type { FC } from 'react'
-import { ThemeToggler } from './ThemeToggler'
+import ThemeToggler from './ThemeToggler'
 
 /* STYLES */
 import * as s from '../styles/AppHeaderStyles'

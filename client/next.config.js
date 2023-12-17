@@ -1,20 +1,9 @@
 const path = require('path')
+// const { withSentryConfig } = require("@sentry/nextjs");
 
 module.exports.srcDir = path.resolve('.')
 
-const env = {
-  FIREBASE_AUTH_DOMAIN: process.env.FIREBASE_AUTH_DOMAIN,
-  FIREBASE_DATABASE_URL: process.env.FIREBASE_DATABASE_URL,
-  FIREBASE_PROJECT_ID: process.env.FIREBASE_PROJECT_ID,
-  FIREBASE_PUBLIC_API_KEY: process.env.FIREBASE_PUBLIC_API_KEY,
-  FIREBASE_STORAGE_BUCKET: process.env.FIREBASE_STORAGE_BUCKET,
-  FIREBASE_MESSAGEING_SENDER_ID: process.env.FIREBASE_MESSAGEING_SENDER_ID,
-  FIREBASE_APP_ID: process.env.FIREBASE_APP_ID,
-  JWT_ACCESS_TOKEN_SECRET: process.env.JWT_ACCESS_TOKEN_SECRET,
-}
-
 const nextConfig = {
-  env,
   reactStrictMode: false,
   swcMinify: true,
   compiler: {
@@ -55,40 +44,31 @@ const nextConfig = {
 
 module.exports = nextConfig
 
+// module.exports = withSentryConfig(
+//   module.exports,
+//   {
+//     silent: true,
 
-// Injected content via Sentry wizard below
+//     org: "te1m0z-company",
+//     project: "javascript-nextjs",
+//   },
+//   {
+//     // For all available options, see:
+//     // https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/
 
-const { withSentryConfig } = require("@sentry/nextjs");
+//     // Upload a larger set of source maps for prettier stack traces (increases build time)
+//     widenClientFileUpload: true,
 
-module.exports = withSentryConfig(
-  module.exports,
-  {
-    // For all available options, see:
-    // https://github.com/getsentry/sentry-webpack-plugin#options
+//     // Transpiles SDK to be compatible with IE11 (increases bundle size)
+//     transpileClientSDK: true,
 
-    // Suppresses source map uploading logs during build
-    silent: true,
+//     // Routes browser requests to Sentry through a Next.js rewrite to circumvent ad-blockers (increases server load)
+//     tunnelRoute: "/monitoring",
 
-    org: "te1m0z-company",
-    project: "javascript-nextjs",
-  },
-  {
-    // For all available options, see:
-    // https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/
+//     // Hides source maps from generated client bundles
+//     hideSourceMaps: true,
 
-    // Upload a larger set of source maps for prettier stack traces (increases build time)
-    widenClientFileUpload: true,
-
-    // Transpiles SDK to be compatible with IE11 (increases bundle size)
-    transpileClientSDK: true,
-
-    // Routes browser requests to Sentry through a Next.js rewrite to circumvent ad-blockers (increases server load)
-    tunnelRoute: "/monitoring",
-
-    // Hides source maps from generated client bundles
-    hideSourceMaps: true,
-
-    // Automatically tree-shake Sentry logger statements to reduce bundle size
-    disableLogger: true,
-  }
-);
+//     // Automatically tree-shake Sentry logger statements to reduce bundle size
+//     disableLogger: true,
+//   }
+// );
