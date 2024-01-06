@@ -1,18 +1,11 @@
 import type { NextPage } from 'next'
-//import { useFirebaseAuth } from '@/app'
+import HelloSection from '@/widgets/HomePage/HelloSection'
 
 const HomePage: NextPage = () => {
-  /* HOOKS */
-  //const { user } = useFirebaseAuth()
-
   return (
-    <div>
-      Home page
-      {/* {true ? (
-        <textarea defaultValue={'NOW'}></textarea>
-      ) : null}
-      hello */}
-    </div>
+    <>
+      <HelloSection />
+    </>
   )
 }
 

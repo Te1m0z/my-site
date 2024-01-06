@@ -15,6 +15,7 @@ export {
 /* UI COMPONENTS */
 export { Button } from './ui/Button'
 export { Input } from './ui/Input'
+export { Icon } from './ui/Icon'
 //export { default as Container } from './Container/Container'
 
 /* INTERFACES */
@@ -24,6 +25,7 @@ export type { Breakpoint } from './interfaces/Theme'
 /* HOOKS */
 export { useMediaQuery } from './hooks/useMediaQuery'
 export { useBreakpoints } from './hooks/useBreakpoints'
+export { useThemeDetector } from './hooks/useThemeDetector'
 
 /* HELPERS */
 export { debounce } from './helpers/functions'

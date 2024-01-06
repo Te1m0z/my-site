@@ -5,21 +5,19 @@ import {
   AppStylesTheme,
   AppStyles,
 } from '@/app'
-import { AppLayout } from '@/widgets'
-import { DEFAULT_THEME } from '@/shared'
 import type { AppProps, AppContext } from 'next/app'
 import type { ReactNode } from 'react'
-import type { TAppTheme } from '@/shared'
+import { AppLayout } from '@/widgets'
+import { type TToggleTheme } from '@/widgets/AppHeader/components/ThemeToggler'
 
 type IServerSideProps = {
-  theme: TAppTheme;
+  theme: TToggleTheme;
 };
 
 type TMyApp = AppProps & IServerSideProps;
 
 const MyApp = ({ Component, pageProps, theme }: TMyApp): ReactNode => {
   return (
-    // <FirebaseAuthProvider>
     <>
       <AppStyles />
       <ViewportProvider>
@@ -31,13 +29,12 @@ const MyApp = ({ Component, pageProps, theme }: TMyApp): ReactNode => {
         </AppThemeProvider>
       </ViewportProvider>
     </>
-    // </FirebaseAuthProvider>
   )
 }
 
 MyApp.getInitialProps = ({ ctx }: AppContext): IServerSideProps => {
   return {
-    theme: (getCookie('theme', ctx) as TAppTheme) || DEFAULT_THEME,
+    theme: getCookie('theme', ctx) as TToggleTheme,
   }
 }
 

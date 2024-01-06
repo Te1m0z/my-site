@@ -2,11 +2,12 @@ import styled from 'styled-components'
 import { FONT_SIZES, TEXT_COLOR, FONT_FAMILIES, DEVICES } from '@/shared'
 
 const Header = styled.header`
-  border: 1px dotted red;
-  position: absolute;
+  //border: 1px dotted red;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+  z-index: 100;
 `
 
 const Inner = styled.div`
@@ -57,11 +58,6 @@ const MenuBlock = styled.nav`
 const ThemeBlock = styled.div`
   display: flex;
   align-items: center;
-
-  & > button {
-    border: 2px solid red;
-    padding: 10px;
-  }
 `
 
 export {

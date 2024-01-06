@@ -4,7 +4,7 @@ const path = require('path')
 module.exports.srcDir = path.resolve('.')
 
 const nextConfig = {
-  reactStrictMode: false,
+  // reactStrictMode: false,
   swcMinify: true,
   compiler: {
     styledComponents: true

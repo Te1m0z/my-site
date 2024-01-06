@@ -1,39 +1,42 @@
 import { useState, useMemo, type ReactNode } from 'react'
 import { ThemeProvider } from 'styled-components'
 import { setCookie } from 'cookies-next'
-import { DEFAULT_THEME, type TAppTheme } from '@/shared'
+import { DEFAULT_THEME, useThemeDetector } from '@/shared'
+import { type TToggleTheme } from '@/widgets/AppHeader/components/ThemeToggler'
 
 interface IThemeProviderProps {
   children: ReactNode
-  theme: TAppTheme
+  theme?: TToggleTheme
 }
 
 const AppThemeProvider = (props: IThemeProviderProps) => {
-  //
+  // theme - из кук
   const { children, theme } = props
+  //
+  const systemTheme = useThemeDetector()
   //
   const initialTheme = theme || DEFAULT_THEME
 
-  /**
-   * Get initial value from local storage or set 'light'
-   */
-  const [themeValue, setThemeValue] = useState<TAppTheme>(initialTheme)
+  const [themeValue, setThemeValue] = useState<TToggleTheme>(initialTheme)
 
-  /**
-   * Функция установки нового значения темы
-   * @param value {TMainTheme}
-   */
-  const setTheme = (value: TAppTheme) => {
+  const setTheme = (value: TToggleTheme) => {
     setThemeValue(value)
     setCookie('theme', value, { maxAge: 60 * 60 * 24 * 30 })
   }
 
-  const themeProviderValue = useMemo(() => {
+  const themeProviderValue = () => {
+    let value = themeValue
+
+    if (themeValue === 'system') {
+      value = systemTheme
+    }
+
     return {
-      value: themeValue,
+      label: themeValue,
+      value,
       setTheme
     }
-  }, [themeValue])
+  }
 
   return (
     <ThemeProvider theme={themeProviderValue}>

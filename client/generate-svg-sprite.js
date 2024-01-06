@@ -14,8 +14,6 @@ const spriter = new SVGSpriter({
 function addSvgFilesToSpriter(directory) {
   const files = fs.readdirSync(directory);
 
-  console.log(files)
-
   files.forEach(file => {
     const filePath = path.join(directory, file);
     if (path.extname(filePath).toLowerCase() === '.svg') {
@@ -30,13 +28,12 @@ const svgDirectory = path.resolve('src/assets/icons');
 
 addSvgFilesToSpriter(svgDirectory);
 
-
 spriter.compile((error, result) => {
   /* Write `result` files to disk (or do whatever with them ...) */
   for (const mode in result) {
-      for (const resource in result[mode]) {
-          fs.mkdirSync(path.dirname(result[mode][resource].path), { recursive: true });
-          fs.writeFileSync(result[mode][resource].path, result[mode][resource].contents);
-      }
+    for (const resource in result[mode]) {
+      fs.mkdirSync(path.dirname(result[mode][resource].path), { recursive: true });
+      fs.writeFileSync(result[mode][resource].path, result[mode][resource].contents);
+    }
   }
 });

@@ -1,37 +1,43 @@
-import { type FC, useState } from 'react'
+import cn from 'classnames'
 import { useTheme } from 'styled-components'
-import { type TAppTheme } from '@/shared'
-import { Icon } from '@/shared/ui/Icon'
-
-/* STYLES */
+import { Icon, TAppTheme } from '@/shared'
 import * as s from './style'
 
-const ThemeToggler: FC = (): JSX.Element => {
-  /* REFS */
-  const theme = useTheme()
+export type TToggleTheme = TAppTheme | 'system'
 
-  /* STATES */
-
-  /* HOOKS */
-
-  /* METHODS */
-
-  /* HANDLERS */
-  function toggleTheme() {
-    //
-    const val = theme.value === 'light' ? 'dark' : 'light'
-    //
-    theme.setTheme(val)
-  }
+export default function ThemeToggler() {
+  
+  const { label, setTheme } = useTheme()
 
   return (
     <s.ThemeToggler>
-      <Icon id="sun" />
-      <Icon id="moon" />
-      <div>light</div>
-      <div>dark</div>
+      <s.ThemeTogglerItem
+        onClick={() => setTheme('light')}
+        className={cn({ active: label === 'light' })}
+      >
+        <Icon
+          name="sun"
+          size={20}
+        />
+      </s.ThemeTogglerItem>
+      <s.ThemeTogglerItem
+        onClick={() => setTheme('system')}
+        className={cn({ active: label === 'system' })}
+      >
+        <Icon
+          name="monitor"
+          size={20}
+        />
+      </s.ThemeTogglerItem>
+      <s.ThemeTogglerItem
+        onClick={() => setTheme('dark')}
+        className={cn({ active: label === 'dark' })}
+      >
+        <Icon
+          name="moon"
+          size={20}
+        />
+      </s.ThemeTogglerItem>
     </s.ThemeToggler>
   )
 }
-
-export default ThemeToggler

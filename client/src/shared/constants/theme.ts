@@ -2,7 +2,7 @@ import theme from 'styled-theming'
 import type { TAppTheme } from '../interfaces/Theme'
 import { oxanium, poppins } from '@/app/styles/fonts'
 
-const DEFAULT_THEME: TAppTheme = 'light'
+const DEFAULT_THEME: TAppTheme = 'system'
 
 const COLORS = {
   purple: '#EC4899',
@@ -30,6 +30,7 @@ const FONT_FAMILIES = {
 
 const SIZES = {
   siteContainer: '1024px',
+  header: '100px'
 } as const
 
 const BREAKPOINTS = {

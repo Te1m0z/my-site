@@ -23,6 +23,8 @@ const GlobalStyles = createGlobalStyle`
 		color: ${TEXT_COLOR};
 		background-color: ${BG_COLOR};
 		transition: 300ms ease background-color, 300ms ease color;
+
+		background-image: url('https://pbs.twimg.com/media/GAEbE2bWoAAIonp?format=jpg&name=medium');
 	}
 
 	#__next {
@@ -30,6 +32,9 @@ const GlobalStyles = createGlobalStyle`
 		flex-flow: column nowrap;
 		min-width: 320px;
 		min-height: 100vh;
+		
+		/* REMOVE */
+		height: 3000px;
 	}
 
 	.container {
@@ -42,6 +47,16 @@ const GlobalStyles = createGlobalStyle`
 
 	img {
 		object-fit: cover;
+	}
+
+	.icon {
+		display: block;
+		margin: 0;
+		padding: 0;
+		pointer-events: none;
+		touch-action: none;
+		fill: var(--fill-color, currentColor);
+		stroke: var(--stroke-color, transparent);
 	}
 `
 
