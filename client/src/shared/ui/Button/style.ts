@@ -1,6 +1,6 @@
 import { styled } from 'styled-components'
-//import themes, { Theme as t } from '@/styles/themes'
 import { COLORS } from '../../constants/theme'
+import { FONT_FAMILIES, FONT_WEIGHTS } from '@/shared'
 
 export const Button = styled.button`
   position: relative;
@@ -8,8 +8,8 @@ export const Button = styled.button`
   padding: 18px;
   border: 1px solid ${COLORS.purple};
   font-size: inherit;
-  font-weight: 500;
-  font-family: 'Oxanium', sans-serif;
+  font-weight: ${FONT_WEIGHTS.light};
+  font-family: ${FONT_FAMILIES.oxanium};
   &:hover {
     &::before,
     &::after {

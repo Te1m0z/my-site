@@ -13,7 +13,7 @@ export {
 } from './constants/theme'
 
 /* UI COMPONENTS */
-export { Button } from './ui/Button'
+// export { default } from './ui/Button'
 export { Input } from './ui/Input'
 export { Icon } from './ui/Icon'
 //export { default as Container } from './Container/Container'

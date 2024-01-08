@@ -5,6 +5,7 @@ import Document, {
   NextScript,
 } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
+import('@/app/config/axios')
 
 /* COMPONENTS */
 import { AppToaster } from '@/app'

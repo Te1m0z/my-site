@@ -6,7 +6,7 @@ export default function HelloSection() {
     <s.Main>
       <s.Background />
       <s.Title>
-        Hi, my name is Dmitry, I am a Web Developer 
+        <span className='iam'>Hi, my name is Dmitry I am a Web &nbsp;<span className='dev'>Developer</span></span>
       </s.Title>
       <s.Description>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.

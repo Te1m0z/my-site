@@ -1,5 +1,5 @@
-import { LoginForm } from '~/src/features/LoginForm'
 import type { NextPage } from 'next'
+import LoginForm from '@/features/LoginForm'
 
 const LoginPage: NextPage = () => {
   /* REFS */

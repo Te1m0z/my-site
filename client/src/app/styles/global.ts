@@ -24,7 +24,7 @@ const GlobalStyles = createGlobalStyle`
 		background-color: ${BG_COLOR};
 		transition: 300ms ease background-color, 300ms ease color;
 
-		background-image: url('https://pbs.twimg.com/media/GAEbE2bWoAAIonp?format=jpg&name=medium');
+		//background-image: url('https://pbs.twimg.com/media/GAEbE2bWoAAIonp?format=jpg&name=medium');
 	}
 
 	#__next {

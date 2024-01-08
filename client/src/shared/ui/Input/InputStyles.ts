@@ -41,7 +41,7 @@ export const Label = styled.label`
     position: absolute;
     top: -1px;
     right: 0;
-    width: 41px;
+    width: 38px;
     transform: translateX(100%) rotate(65deg);
     transform-origin: left;
     background-color: ${COLORS.purple};

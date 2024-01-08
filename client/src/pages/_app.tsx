@@ -7,6 +7,7 @@ import {
 } from '@/app'
 import type { AppProps, AppContext } from 'next/app'
 import type { ReactNode } from 'react'
+import('@/app/config/axios')
 import { AppLayout } from '@/widgets'
 import { type TToggleTheme } from '@/widgets/AppHeader/components/ThemeToggler'
 

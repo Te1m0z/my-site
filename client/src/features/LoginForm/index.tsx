@@ -1,10 +1,12 @@
 import type { FC } from 'react'
+import { useEffect } from 'react'
 import type { SubmitHandler as SHandler } from 'react-hook-form'
 import { useForm } from 'react-hook-form'
-//import { useFirebaseAuth } from '@/app'
+import { useAuthStore } from '@/zustand/csrf'
 
 // Components
-import { Button, Input } from '~/src/shared'
+import { Input } from '@/shared'
+import Button from '@/shared/ui/Button'
 
 type TLoginInputs = {
   email: string
@@ -12,7 +14,7 @@ type TLoginInputs = {
 }
 
 // Styles
-import * as s from '../styles/LoginFormStyles'
+import * as s from './style'
 
 // const notifications = {
 //   success: {
@@ -32,6 +34,9 @@ import * as s from '../styles/LoginFormStyles'
 // }
 
 const LoginForm: FC = (): JSX.Element => {
+
+  const { fetchCsrfToken } = useAuthStore()
+
   /* REFS */
 
   /* STATES */
@@ -44,7 +49,12 @@ const LoginForm: FC = (): JSX.Element => {
     control,
   } = useForm<TLoginInputs>()
 
-  //const { loginWithEmailAndPassword } = useFirebaseAuth()
+  useEffect(() => {
+    (async () => {
+      const token = await fetchCsrfToken()
+      console.log(token)
+    })()
+  })
 
   /* METHODS */
 

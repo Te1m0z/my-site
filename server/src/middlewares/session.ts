@@ -9,7 +9,7 @@ const sessionParams: SessionOptions = {
   saveUninitialized: true,
   cookie: {
     secure: false,
-    maxAge: EXPRESS_SESSION_MAX_AGE,
+    maxAge: Number(EXPRESS_SESSION_MAX_AGE),
   },
 }
 

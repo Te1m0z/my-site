@@ -7,6 +7,7 @@ export const Form = styled.form`
   flex-flow: column nowrap;
   max-width: 500px;
   margin: 0 auto;
+  margin-top: 150px;
 `
 
 export const InputContainer = styled.div`
