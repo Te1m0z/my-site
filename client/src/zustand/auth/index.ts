@@ -1,18 +1,29 @@
 import { create } from 'zustand'
+import * as api from './api'
+import type { UserLoginResponse, UserLoginParams } from './types'
 
 type State = {
   isAuth: boolean
-  login: string | null
-  token: string | null
+  user: {
+    id: number
+    login: string
+    access_token: string
+    refresh_token: string
+  } | null
 }
 
 type Actions = {
-  // increment: (qty: number) => void
-  // decrement: (qty: number) => void
+  login(data: UserLoginParams): UserLoginResponse,
+  setUserData(data: State['user']): void
 }
 
 export const useAuthStore = create<State & Actions>((set) => ({
   isAuth: false,
-  login: null,
-  token: null
+  user: null,
+  async login(data) {
+    return api.login(data)
+  },
+  setUserData(data) {
+    set({ user: data, isAuth: true })
+  }
 }))

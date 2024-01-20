@@ -9,6 +9,10 @@ import type {
 
 axios.defaults.baseURL = process.env.APP_API
 axios.defaults.withCredentials = true
+
+axios.defaults.headers.common['Accept-Language'] = navigator ? navigator.language : process.env.DEFAULT_LOCALE
+axios.defaults.headers.common['X-Timezone'] = Intl ? Intl.DateTimeFormat().resolvedOptions().timeZone : process.env.DEFAULT_TIMEZONE
+
 // axios.defaults.headers['Accept'] = APPLICATION_JSON
 // axios.defaults.headers['Content-Type'] = APPLICATION_JSON
 

@@ -44,7 +44,10 @@ function wrongData(response: Response, issues?: ZodIssue[]) {
   // Data in the response from the server
   const payload = {
     status: false,
-    ...(issues && { errors: issues.map(({ message, path }) => ({ message, path })) }),
+    errors: issues?.reduce((acc, { message, path }) => {
+      acc[path.join('.')] = message
+      return acc
+    }, {} as Record<string, string>),
   }
   // Setting headers for the response
   setHeaders(response, headers)
@@ -63,7 +66,10 @@ function wrongLoginOrPassword(response: Response) {
   // Data in the response from the server
   const payload = {
     status: false,
-    message: 'wrong login or password',
+    errors: {
+      login: 'wrong login or password',
+      password: 'wrong login or password',
+    },
   }
   // Setting headers for the response
   setHeaders(response, headers)
@@ -113,6 +119,9 @@ function csrfValidationFailed(response: Response) {
   // Data in the response from the server
   const payload = {
     status: false,
+    errors: {
+      csrf: 'not valid',
+    },
   }
   // Setting headers for the response
   setHeaders(response, headers)

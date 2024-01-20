@@ -10,6 +10,7 @@ import type { ReactNode } from 'react'
 import('@/app/config/axios')
 import { AppLayout } from '@/widgets'
 import { type TToggleTheme } from '@/widgets/AppHeader/components/ThemeToggler'
+import { Toaster } from 'react-hot-toast';
 
 type IServerSideProps = {
   theme: TToggleTheme;
@@ -29,6 +30,7 @@ const MyApp = ({ Component, pageProps, theme }: TMyApp): ReactNode => {
             </AppLayout>
         </AppThemeProvider>
       </ViewportProvider>
+      <Toaster position="top-right" />
     </>
   )
 }

@@ -3,7 +3,14 @@ const path = require('path')
 
 module.exports.srcDir = path.resolve('.')
 
+const env = {
+  APP_API: "http://localhost:5051/",
+  DEFAULT_LOCALE: "ru-RU",
+  DEFAULT_TIMEZONE: "Europe/Moscow"
+}
+
 const nextConfig = {
+  env,
   // reactStrictMode: false,
   swcMinify: true,
   compiler: {

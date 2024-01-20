@@ -12,7 +12,7 @@ import type {
   Path,
   PathValue,
 } from 'react-hook-form'
-import type { ReactNode } from 'react'
+import type { ReactNode, TextareaHTMLAttributes, InputHTMLAttributes } from 'react'
 
 export type Props<T extends FieldValues> = {
   type?: 'text' | 'email' | 'password'
@@ -27,7 +27,10 @@ export type Props<T extends FieldValues> = {
   children?: ReactNode
 }
 
-//const { className: scrollClass, styles } = getScrollStyles('textarea')
+export type ExtendedProps<T extends FieldValues> = Props<T> & (
+  | InputHTMLAttributes<HTMLInputElement>
+  | TextareaHTMLAttributes<HTMLTextAreaElement>
+)
 
 const Input = <T extends FieldValues>({
   type = 'text',
@@ -39,7 +42,8 @@ const Input = <T extends FieldValues>({
   defaultValue = '' as PathValue<T, Path<T>>,
   label,
   children,
-}: Props<T>) => {
+  ...props
+}: ExtendedProps<T>) => {
 
   if (type === 'email') 
     Object.assign(rules, {
@@ -66,17 +70,17 @@ const Input = <T extends FieldValues>({
       value: true,
       message: 'Поле ' + label + ' должно быть заполнено',
     }
-  
 
   const { field, fieldState: { invalid } } = useController({ control, name, rules, defaultValue })
 
   return (
-    <>
-      {label && <s.Label>{label}</s.Label>}
+    <s.InputWrap className={cn('input', { error: invalid })}>
+      {label && <s.Label className={cn({ invalid })}>{label}</s.Label>}
       {multiline ? (
         <textarea
           placeholder={placeholder}
           {...field}
+          {...props}
         />
       ) : (
         <s.Input
@@ -84,10 +88,11 @@ const Input = <T extends FieldValues>({
           placeholder={placeholder}
           className={cn({ error: invalid })}
           {...field}
+          {...props}
         />
       )}
       {children}
-    </>
+    </s.InputWrap>
   )
 }
 

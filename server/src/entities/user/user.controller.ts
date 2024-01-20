@@ -24,7 +24,10 @@ abstract class UserController {
         fingerprint,
       })
       //
-      return res.status(200).json(userDataWithTokens)
+      return res.status(200).json({
+        status: true,
+        data: userDataWithTokens,
+      })
       //
     } catch (error: unknown) {
       //

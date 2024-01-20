@@ -6,7 +6,5 @@ export interface FetchCsrfResponseModel {
 }
 
 export type FetchError = AxiosError | null
-export type FetchCsrfSuccessResponse =
-  | AxiosResponse<FetchCsrfResponseModel>
-  | undefined
-export type FetchCsrfResponse = Promise<[FetchError, FetchCsrfSuccessResponse]>
+export type FetchCsrfSuccessResponse = string | FetchError
+export type FetchCsrfResponse = Promise<[FetchError, AxiosResponse<FetchCsrfResponseModel> | undefined]>

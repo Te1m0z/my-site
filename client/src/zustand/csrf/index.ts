@@ -10,9 +10,12 @@ type Actions = {
   fetchCsrfToken(): Promise<FetchCsrfSuccessResponse>
 }
 
-export const useAuthStore = create<State & Actions>(() => ({
+export const useCsrfStore = create<State & Actions>(() => ({
   async fetchCsrfToken() {
     const [error, response] = await api.fetchCsrfToken()
-    return response
+    if (response?.data?.token) {
+      return response.data.token
+    }
+    return error
   }
 }))

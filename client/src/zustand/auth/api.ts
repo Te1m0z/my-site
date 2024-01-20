@@ -1,11 +1,11 @@
 import axios from 'axios'
+import type { UserLoginParams, UserLoginResponse } from './types'
 
 const LOGIN_PATH = 'user/login'
 
-
-export const login = (params: SignInParams, locale: AppLocale): UserApiResponse => {
-  const timestamp = Date.now()
-  const url = `${SIGN_IN_PATH}?${timestamp}&language=${locale}`
-
-  return to(axios.post(url, params))
+export async function login(params: UserLoginParams): Promise<UserLoginResponse> {
+  return axios
+    .post(LOGIN_PATH, params)
+    .then((response) => response.data)
+    .catch((error) => error?.response?.data)
 }

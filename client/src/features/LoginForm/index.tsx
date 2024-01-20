@@ -1,80 +1,113 @@
+import { useEffect, useState } from 'react'
 import type { FC } from 'react'
-import { useEffect } from 'react'
-import type { SubmitHandler as SHandler } from 'react-hook-form'
 import { useForm } from 'react-hook-form'
-import { useAuthStore } from '@/zustand/csrf'
+import { toast } from 'react-hot-toast'
+import { useCsrfStore, useAuthStore } from '@/zustand'
 
 // Components
 import { Input } from '@/shared'
 import Button from '@/shared/ui/Button'
 
-type TLoginInputs = {
-  email: string
-  password: string
-}
-
 // Styles
 import * as s from './style'
 
-// const notifications = {
-//   success: {
-//     login: 'You succesfully logged in',
-//   },
-//   error: {
-//     login: 'Wrong login or password',
-//     some: 'Somethin went wrong',
-//     email: {
-//       empty: 'Email can not be empty',
-//     },
-//     password: {
-//       empty: 'Password can not be empty',
-//     },
-//     code: 'Wrong code',
-//   },
-// }
+type TLoginInputs = {
+  login: string
+  password: string
+  csrf: string
+}
 
-const LoginForm: FC = (): JSX.Element => {
+type LoginFormProps = {
+  initialCsrfToken: string;
+}
 
-  const { fetchCsrfToken } = useAuthStore()
+const LoginForm: FC<LoginFormProps> = ({ initialCsrfToken }): JSX.Element => {
 
-  /* REFS */
+  const { fetchCsrfToken } = useCsrfStore()
+  const { login, setUserData } = useAuthStore()
 
-  /* STATES */
-
-  /* HOOKS */
+  const [csrfToken, setCsrfToken] = useState(initialCsrfToken)
+  const [formMessage, setFormMessage] = useState('')
 
   const {
     handleSubmit,
-    formState: { errors },
     control,
+    setValue,
+    setError,
+    watch,
+    clearErrors,
+    reset
   } = useForm<TLoginInputs>()
+
+  let a = useForm<TLoginInputs>()
+
+  console.log(a)
 
   useEffect(() => {
     (async () => {
-      const token = await fetchCsrfToken()
-      console.log(token)
+      if (!csrfToken) {
+        const token = (await fetchCsrfToken()) as string
+        setCsrfToken(token)
+        setValue('csrf', token)
+      }
     })()
-  })
 
-  /* METHODS */
+    const formWatcher = watch((_, { name }) => {
+      if (formMessage && (name === 'login' || name === 'password')) {
+        console.log(231321)
+        setFormMessage('')
+        clearErrors()
+      }
+    })
 
-  /* HANDLERS */
+    return () => {
+      formWatcher.unsubscribe()
+    }
+  }, [])
 
-  const loginFormSubmit: SHandler<TLoginInputs> = async (data) => {
-    //await loginWithEmailAndPassword(data)
+  async function loginFormSubmit(params: TLoginInputs) {
+    const data = await login(params)
+    //
+    if (data.status && data.data) {
+      setUserData(data.data)
+      reset()
+      return
+    }
+    //
+    if (!data.status && !data.errors) {
+      toast.error('dada')
+      return alert('some went wrong!!')
+    }
+    // csrf error
+    if (data.errors && 'csrf' in data.errors) {
+      return alert('some went wrong due to csrf')
+    }
+    // login or password error
+    if (data.errors && ('login' in data.errors || 'password' in data.errors)) {
+      toast.error('dada')
+      setFormMessage('Login or Password incorrect')
+    }
+    //
+    for (const field in data!.errors) {
+      setError(field, {
+        type: 'manual',
+        message: data.errors[field],
+      })
+    }
   }
 
   return (
     <div className='login-page'>
       <s.Form onSubmit={handleSubmit(loginFormSubmit)}>
+        <input type="hidden" name="csrf" defaultValue={csrfToken} />
         <s.FormTitle>Welcome</s.FormTitle>
         <s.InputContainer>
           <Input
-            type={'email'}
-            name={'email'}
-            label={'Email'}
+            name={'login'}
+            label={'Login'}
             control={control}
             rules={{ required: true }}
+            onInput={() => setFormMessage('')}
           />
         </s.InputContainer>
         <s.InputContainer>
@@ -87,17 +120,27 @@ const LoginForm: FC = (): JSX.Element => {
               required: true,
               minLength: 1,
             }}
+            onInput={() => setFormMessage('')}
           />
         </s.InputContainer>
         <Button type='submit'>Log In</Button>
-        {/* Ошибки */}
-        {errors.email && <s.FormError>{errors.email.message}</s.FormError>}
-        {errors.password && (
-          <s.FormError>{errors.password.message}</s.FormError>
-        )}
+        {formMessage.length > 0 && formMessage}
       </s.Form>
     </div>
   )
 }
+
+export const getServerSideProps = async () => {
+  const { fetchCsrfToken } = useCsrfStore();
+  const token = await fetchCsrfToken();
+
+  console.log(token)
+
+  return {
+    props: {
+      initialCsrfToken: token,
+    },
+  };
+};
 
 export default LoginForm
