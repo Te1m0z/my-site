@@ -45,42 +45,41 @@ const Input = <T extends FieldValues>({
   ...props
 }: ExtendedProps<T>) => {
 
-  if (type === 'email') 
-    Object.assign(rules, {
-      pattern: {
-        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-        message: 'Invalid email address',
-      },
-    })
-  
-
-  if (type === 'password') 
-    rules = {
-      minLength: {
-        value: 8,
-        message: 'Password must be at least 8 characters long',
-      },
-      ...rules,
-    }
-  
-
-  // Если нет дефолт сообщения - то устанавливаем
-  if (typeof rules.required === 'boolean') 
-    rules.required = {
-      value: true,
-      message: 'Поле ' + label + ' должно быть заполнено',
-    }
+  // if (type === 'email')
+  //   Object.assign(rules, {
+  //     pattern: {
+  //       value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+  //       message: 'Invalid email address',
+  //     },
+  //   })
+  //
+  //
+  // if (type === 'password')
+  //   rules = {
+  //     minLength: {
+  //       value: 8,
+  //       message: 'Password must be at least 8 characters long',
+  //     },
+  //     ...rules,
+  //   }
+  //
+  //
+  // // Если нет дефолт сообщения - то устанавливаем
+  // if (typeof rules.required === 'boolean')
+  //   rules.required = {
+  //     value: true,
+  //     message: 'Поле ' + label + ' должно быть заполнено',
+  //   }
 
   const { field, fieldState: { invalid } } = useController({ control, name, rules, defaultValue })
 
   return (
     <s.InputWrap className={cn('input', { error: invalid })}>
-      {label && <s.Label className={cn({ invalid })}>{label}</s.Label>}
+      {!!label && <s.Label className={cn({ invalid })}>{label}</s.Label>}
       {multiline ? (
         <textarea
           placeholder={placeholder}
           {...field}
-          {...props}
         />
       ) : (
         <s.Input
@@ -88,7 +87,6 @@ const Input = <T extends FieldValues>({
           placeholder={placeholder}
           className={cn({ error: invalid })}
           {...field}
-          {...props}
         />
       )}
       {children}

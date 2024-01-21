@@ -1,4 +1,3 @@
-import type { AxiosResponse, AxiosError } from 'axios'
 import type { BaseHttpError, BaseHttpSuccess } from '@/shared/interfaces/Http'
 
 export interface UserLoginParams {
@@ -14,15 +13,8 @@ export interface UserLoginSuccessData {
   refresh_token: string
 }
 
-
-
-// возможный ответ от сервера
-
-type success = AxiosResponse<BaseHttpSuccess<UserLoginSuccessData>>
-type error = AxiosError<BaseHttpError>
-
 function computeResponseType(response: BaseHttpSuccess<UserLoginSuccessData> | BaseHttpError) {
-  if (response.status === true) {
+  if (response.status) {
     return {
       status: true,
       data: {} as Record<string, string>

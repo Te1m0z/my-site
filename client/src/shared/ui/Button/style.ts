@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { COLORS } from '../../constants/theme'
+import { COLORS } from '@/shared'
 import { FONT_FAMILIES, FONT_WEIGHTS } from '@/shared'
 
 export const Button = styled.button`

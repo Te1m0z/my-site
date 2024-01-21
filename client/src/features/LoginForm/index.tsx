@@ -10,6 +10,7 @@ import Button from '@/shared/ui/Button'
 
 // Styles
 import * as s from './style'
+import { UserLoginSuccessData } from '@/zustand/auth/types.ts'
 
 type TLoginInputs = {
   login: string
@@ -39,10 +40,6 @@ const LoginForm: FC<LoginFormProps> = ({ initialCsrfToken }): JSX.Element => {
     reset
   } = useForm<TLoginInputs>()
 
-  let a = useForm<TLoginInputs>()
-
-  console.log(a)
-
   useEffect(() => {
     (async () => {
       if (!csrfToken) {
@@ -54,7 +51,6 @@ const LoginForm: FC<LoginFormProps> = ({ initialCsrfToken }): JSX.Element => {
 
     const formWatcher = watch((_, { name }) => {
       if (formMessage && (name === 'login' || name === 'password')) {
-        console.log(231321)
         setFormMessage('')
         clearErrors()
       }
@@ -69,27 +65,25 @@ const LoginForm: FC<LoginFormProps> = ({ initialCsrfToken }): JSX.Element => {
     const data = await login(params)
     //
     if (data.status && data.data) {
-      setUserData(data.data)
+      setUserData((data.data as unknown as UserLoginSuccessData))
       reset()
-      return
+      return toast.success('you successfully logged in')
     }
     //
     if (!data.status && !data.errors) {
-      toast.error('dada')
-      return alert('some went wrong!!')
+      return toast.error('something went wrong')
     }
     // csrf error
     if (data.errors && 'csrf' in data.errors) {
-      return alert('some went wrong due to csrf')
+      return toast.error('some went wrong due to csrf')
     }
     // login or password error
     if (data.errors && ('login' in data.errors || 'password' in data.errors)) {
-      toast.error('dada')
       setFormMessage('Login or Password incorrect')
     }
     //
     for (const field in data!.errors) {
-      setError(field, {
+      setError((field as keyof TLoginInputs), {
         type: 'manual',
         message: data.errors[field],
       })
@@ -133,8 +127,6 @@ const LoginForm: FC<LoginFormProps> = ({ initialCsrfToken }): JSX.Element => {
 export const getServerSideProps = async () => {
   const { fetchCsrfToken } = useCsrfStore();
   const token = await fetchCsrfToken();
-
-  console.log(token)
 
   return {
     props: {

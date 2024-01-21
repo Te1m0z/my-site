@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Button as ButtonStyles } from '@/shared/ui/Button/style'
+import { Button } from '@/shared/ui/Button/style'
 import { FONT_FAMILIES, TEXT_COLOR, FONT_WEIGHTS } from '@/shared/constants/theme'
 
 const Main = styled.div`
@@ -43,7 +43,7 @@ const Description = styled.div`
   color: ${TEXT_COLOR};
 `
 
-const Button = styled(ButtonStyles)`
+const ViewPortfolioButton = styled(Button)`
   width: 215px;
 `
 
@@ -90,6 +90,6 @@ export {
   Main,
   Title,
   Description,
-  Button,
+  ViewPortfolioButton,
   Background
 }

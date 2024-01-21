@@ -1,20 +1,14 @@
 import Link from 'next/link'
 import type { FC } from 'react'
 import ThemeToggler from './ThemeToggler'
+import { useAuthStore } from '@/zustand'
 
 /* STYLES */
 import * as s from '../styles/AppHeaderStyles'
 
 const AppHeader: FC = (): JSX.Element => {
-  /* REFS */
 
-  /* STATES */
-
-  /* HOOKS */
-
-  /* METHODS */
-
-  /* HANDLERS */
+  const isUserAuth = useAuthStore((state) => state.isAuth)
 
   return (
     <s.Header>
@@ -34,10 +28,15 @@ const AppHeader: FC = (): JSX.Element => {
               <li>
                 <Link href='/about'>About me</Link>
               </li>
+              {isUserAuth && (
+                <li>
+                  <Link href="/admin">admin</Link>
+                </li>
+              )}
             </ul>
           </s.MenuBlock>
           <s.ThemeBlock>
-            <ThemeToggler />
+          <ThemeToggler />
           </s.ThemeBlock>
         </s.Inner>
       </div>

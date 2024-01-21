@@ -16,35 +16,35 @@ axios.defaults.headers.common['X-Timezone'] = Intl ? Intl.DateTimeFormat().resol
 // axios.defaults.headers['Accept'] = APPLICATION_JSON
 // axios.defaults.headers['Content-Type'] = APPLICATION_JSON
 
-// axios.interceptors.request.use((config: InternalAxiosRequestConfig) => {
-//   const authToken = getGetter('user/getAuthToken')
+axios.interceptors.request.use((config: InternalAxiosRequestConfig) => {
+  const authToken = getGetter('user/getAuthToken')
 
-//   if (authToken) {
-//     config.headers['Authorization'] = `Bearer ${authToken}`
-//   }
+  if (authToken) {
+    config.headers['Authorization'] = `Bearer ${authToken}`
+  }
 
-//   return config
-// })
+  return config
+})
 
 // axios.interceptors.response.use(
 //   (response: AxiosResponse): AxiosResponse => {
 //     window.dispatchEvent(new Event('online'))
-
+//
 //     return response
 //   },
 //   (error: AxiosError): Promise<AxiosError | AxiosRequestConfig> => {
 //     if (error?.response?.statusText === 'Unauthorized') {
 //       const authToken = getGetter('user/getAuthToken')
-
+//
 //       if (authToken) {
 //         callAction('user/resetUser')
 //       }
 //     }
-
+//
 //     if (error?.message === 'Network Error') {
 //       window.dispatchEvent(new Event('offline'))
 //     }
-
+//
 //     throw error
 //   }
 // )

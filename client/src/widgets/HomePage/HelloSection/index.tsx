@@ -11,9 +11,9 @@ export default function HelloSection() {
       <s.Description>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
       </s.Description>
-      <s.Button>
+      <s.ViewPortfolioButton>
         View Portfolio
-      </s.Button>
+      </s.ViewPortfolioButton>
     </s.Main>
   )
 }

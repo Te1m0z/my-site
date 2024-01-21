@@ -1,6 +1,6 @@
 import { styled } from 'styled-components'
 //import themes, { Theme as t } from '@/styles/themes'
-import { COLORS } from '../../constants/theme'
+import { COLORS } from '@/shared'
 
 export const InputWrap = styled.div`
   position: relative;

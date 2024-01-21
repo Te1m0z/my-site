@@ -12,7 +12,7 @@ const env = {
 const nextConfig = {
   env,
   // reactStrictMode: false,
-  swcMinify: true,
+  // swcMinify: true,
   compiler: {
     styledComponents: true
   },
